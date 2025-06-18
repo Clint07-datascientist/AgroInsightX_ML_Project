@@ -1,0 +1,90 @@
+{
+    "description": "",
+    "tags": [
+        {
+            "id": 15666025,
+            "tagId": 29531,
+            "name": "age",
+            "value": 2,
+            "labelerLogin": "cx@datasetninja.com",
+            "createdAt": "2024-01-19T09:22:31.257Z",
+            "updatedAt": "2024-01-19T09:22:31.257Z"
+        },
+        {
+            "id": 15666026,
+            "tagId": 29532,
+            "name": "datetime",
+            "value": "2021-05-27",
+            "labelerLogin": "cx@datasetninja.com",
+            "createdAt": "2024-01-19T09:22:31.257Z",
+            "updatedAt": "2024-01-19T09:22:31.257Z"
+        },
+        {
+            "id": 15666027,
+            "tagId": 29533,
+            "name": "district",
+            "value": "Kasese",
+            "labelerLogin": "cx@datasetninja.com",
+            "createdAt": "2024-01-19T09:22:31.257Z",
+            "updatedAt": "2024-01-19T09:22:31.257Z"
+        },
+        {
+            "id": 15666028,
+            "tagId": 29535,
+            "name": "mlb",
+            "value": null,
+            "labelerLogin": "cx@datasetninja.com",
+            "createdAt": "2024-01-19T09:22:31.257Z",
+            "updatedAt": "2024-01-19T09:22:31.257Z"
+        },
+        {
+            "id": 15666029,
+            "tagId": 29537,
+            "name": "subcounty",
+            "value": "Rukoki",
+            "labelerLogin": "cx@datasetninja.com",
+            "createdAt": "2024-01-19T09:22:31.257Z",
+            "updatedAt": "2024-01-19T09:22:31.257Z"
+        },
+        {
+            "id": 15666030,
+            "tagId": 29538,
+            "name": "variety",
+            "value": "LOCAL",
+            "labelerLogin": "cx@datasetninja.com",
+            "createdAt": "2024-01-19T09:22:31.257Z",
+            "updatedAt": "2024-01-19T09:22:31.257Z"
+        }
+    ],
+    "size": {
+        "height": 765,
+        "width": 1024
+    },
+    "objects": [
+        {
+            "id": 128803142,
+            "classId": 6511799,
+            "objectId": null,
+            "description": "",
+            "geometryType": "rectangle",
+            "labelerLogin": "cx@datasetninja.com",
+            "createdAt": "2023-12-17T03:49:13.904Z",
+            "updatedAt": "2023-12-17T03:49:13.904Z",
+            "tags": [],
+            "classTitle": "maize leaf blight",
+            "points": {
+                "exterior": [
+                    [
+                        1,
+                        2
+                    ],
+                    [
+                        1020,
+                        724
+                    ]
+                ],
+                "interior": []
+            }
+        }
+    ]
+}

@@ -1,0 +1,90 @@
+{
+    "description": "",
+    "tags": [
+        {
+            "id": 15707103,
+            "tagId": 29531,
+            "name": "age",
+            "value": 2,
+            "labelerLogin": "cx@datasetninja.com",
+            "createdAt": "2024-01-19T09:24:26.239Z",
+            "updatedAt": "2024-01-19T09:24:26.239Z"
+        },
+        {
+            "id": 15707104,
+            "tagId": 29532,
+            "name": "datetime",
+            "value": "2021-05-26",
+            "labelerLogin": "cx@datasetninja.com",
+            "createdAt": "2024-01-19T09:24:26.239Z",
+            "updatedAt": "2024-01-19T09:24:26.239Z"
+        },
+        {
+            "id": 15707105,
+            "tagId": 29533,
+            "name": "district",
+            "value": "Kasese",
+            "labelerLogin": "cx@datasetninja.com",
+            "createdAt": "2024-01-19T09:24:26.239Z",
+            "updatedAt": "2024-01-19T09:24:26.239Z"
+        },
+        {
+            "id": 15707106,
+            "tagId": 29536,
+            "name": "msv",
+            "value": null,
+            "labelerLogin": "cx@datasetninja.com",
+            "createdAt": "2024-01-19T09:24:26.239Z",
+            "updatedAt": "2024-01-19T09:24:26.239Z"
+        },
+        {
+            "id": 15707107,
+            "tagId": 29537,
+            "name": "subcounty",
+            "value": "Kitswamba",
+            "labelerLogin": "cx@datasetninja.com",
+            "createdAt": "2024-01-19T09:24:26.239Z",
+            "updatedAt": "2024-01-19T09:24:26.239Z"
+        },
+        {
+            "id": 15707108,
+            "tagId": 29538,
+            "name": "variety",
+            "value": "LOCAL",
+            "labelerLogin": "cx@datasetninja.com",
+            "createdAt": "2024-01-19T09:24:26.239Z",
+            "updatedAt": "2024-01-19T09:24:26.239Z"
+        }
+    ],
+    "size": {
+        "height": 768,
+        "width": 1024
+    },
+    "objects": [
+        {
+            "id": 128809459,
+            "classId": 6511800,
+            "objectId": null,
+            "description": "",
+            "geometryType": "rectangle",
+            "labelerLogin": "cx@datasetninja.com",
+            "createdAt": "2023-12-17T03:54:42.854Z",
+            "updatedAt": "2023-12-17T03:54:42.854Z",
+            "tags": [],
+            "classTitle": "maize streak virus",
+            "points": {
+                "exterior": [
+                    [
+                        0,
+                        4
+                    ],
+                    [
+                        1023,
+                        766
+                    ]
+                ],
+                "interior": []
+            }
+        }
+    ]
+}
