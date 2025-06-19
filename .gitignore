@@ -1,0 +1,40 @@
+# Python virtual environments
+.venv/
+.venv_*
+venv/
+env/
+*/venv/
+*/.venv/
+
+# Byte-code files
+*.pyc
+__pycache__/
+
+# Jupyter Notebook specific files
+.ipynb_checkpoints/
+*.ipynb
+!notebook.ipynb # Don't ignore your actual notebook.ipynb!
+
+# IDE specific files
+.vscode/ # VS Code settings specific to this project
+.idea/   # PyCharm specific files
+
+# Operating System files
+.DS_Store # macOS
+Thumbs.db # Windows
+
+# Temporary files
+*.log
+*.tmp
+*.swp
+*.bak
+
+# Saved models directory (since you'll be explicitly saving models there)
+saved_models/
+
+# Dataset directory (if you plan to keep raw data outside of Git)
+# If your 'data_maize' folder is large and you don't want to track it in Git, uncomment this:
+# data_maize/
+
+# Add specific files to ignore (if any)
+# my_secret_config.ini
