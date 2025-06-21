@@ -1,6 +1,6 @@
 # AgroInsightX: Maize Pests and Disease Classification using Machine Learning
 
-[Video Description of The Project](https://youtu.be/x0EiqhDlbHE)
+[Video Description of The Project](https:)
 
 ### Problem Statement: Enhancing Maize Yield and Food Security in Rwanda Through Early Pest and Disease Detection
 Maize is a cornerstone of food security and agricultural livelihoods in Rwanda, contributing 24% to the national GDP in Q4 2024 and employing a significant portion of the workforce. However, its production is consistently threatened by the devastating impact of pests and diseases, leading to substantial yield losses that directly affect the incomes and food security of smallholder farmers. The unpredictability and rapid spread of these threats, coupled with limited access to timely expert diagnosis for many smallholder farmers, exacerbate the problem.
