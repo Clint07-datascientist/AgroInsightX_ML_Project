@@ -3,11 +3,7 @@
 [Video Description of The Project](https://youtu.be/x0EiqhDlbHE)
 
 ### Problem Statement: Enhancing Maize Yield and Food Security in Rwanda Through Early Pest and Disease Detection
-Maize is a cornerstone of food security and agricultural livelihoods in Rwanda, contributing 24% to the national GDP in Q4 2024 and employing a significant portion of the workforce. However, its production is consistently threatened by the devastating impact of pests and diseases, leading to substantial yield losses that directly affect the incomes and food security of smallholder farmers.
-
-Despite national efforts, including a reported 5% decrease in maize production in Season A of 2025 (down to 481,246 metric tons from 2024 Season A) and an average national yield of 2 tons per hectare (with smallholder farmers often achieving even less), these challenges persist. Major threats like Fall Armyworm (FAW), which by April 2017 had infested an estimated 17,521 hectares of maize across all 30 districts of Rwanda, and diseases such as Maize Lethal Necrosis (MLN), which can cause yield losses of up to 100% in severely infected areas, significantly hinder optimal production. The unpredictability and rapid spread of these threats, coupled with limited access to timely expert diagnosis for many smallholder farmers, exacerbate the problem.
-
-Current methods of pest and disease detection often rely on manual inspection, which is time-consuming, requires specialized knowledge, and is not scalable, leading to delayed interventions and further crop damage. Therefore, there is a critical need for an accessible, rapid, and accurate system to identify maize pests and diseases at early stages. This project aims to address this challenge by developing and optimizing machine learning models for image-based detection of maize pests and diseases, leveraging a specialized Mendeley dataset to provide an efficient and scalable diagnostic tool for Rwandan farmers.
+Maize is a cornerstone of food security and agricultural livelihoods in Rwanda, contributing 24% to the national GDP in Q4 2024 and employing a significant portion of the workforce. However, its production is consistently threatened by the devastating impact of pests and diseases, leading to substantial yield losses that directly affect the incomes and food security of smallholder farmers. The unpredictability and rapid spread of these threats, coupled with limited access to timely expert diagnosis for many smallholder farmers, exacerbate the problem.
 
 ### **Project Overview**
 
