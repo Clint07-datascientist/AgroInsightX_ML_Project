@@ -1,4 +1,4 @@
-# AgroInsightX Maize Pests and Disease Classification using Machine Learning
+# AgroInsightX: Maize Pests and Disease Classification using Machine Learning
 
 [Video Description of The Project](https://youtu.be/x0EiqhDlbHE)
 
