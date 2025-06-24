@@ -59,67 +59,47 @@ pip install tensorflow scikit-learn numpy seaborn matplotlib joblib
 2.  **Run the Notebook:**
     * Open and run the `Summative_Intro_to_ml_Clinton_Pikita_assignment.ipyn` file in a Jupyter environment. The notebook contains all the code for data preprocessing, model training, and evaluation.
 
+### **Implementation of the ML Algorithms**
 
+This project implements two main approaches for maize pest and disease classification:
 
-### **Implementation Choices & Methodology**
+- **Support Vector Machine (SVM):** Images are preprocessed by converting to grayscale, flattening, and normalizing with StandardScaler. Dimensionality reduction is performed using PCA. Hyperparameters (C, gamma, kernel) are tuned using RandomizedSearchCV. The best SVM model is evaluated on validation and test sets using accuracy, F1-score, precision, and recall.
 
-This project implements and compares two main approaches: a classical machine learning algorithm (Support Vector Machine, SVM) and a deep learning approach using Convolutional Neural Networks (CNNs). Each approach is optimized and evaluated for the maize pest and disease classification task.
-
-#### **1. Classical Model: Support Vector Machine (SVM)**
-
-* **Feature Engineering:** Images are converted to grayscale, flattened, and then normalized using `StandardScaler`.
-* **Dimensionality Reduction:** Principal Component Analysis (PCA) reduces the high-dimensional feature space to the most informative components, improving efficiency and performance.
-* **Hyperparameter Tuning:** `RandomizedSearchCV` is used to efficiently search for the best SVM hyperparameters (`C`, `gamma`, and `kernel`).
-* **Model Evaluation:** The best SVM model is trained and evaluated on the validation and test sets, with metrics including accuracy, F1-score, precision, and recall.
-
-#### **2. Neural Network Models (CNN)**
-
-* **Model Architecture:** The CNN consists of multiple convolutional and pooling layers, followed by dense layers. The input shape matches the resized image dimensions `(128, 128, 3)`.
-* **Optimization Techniques:**
-    * **Optimizers:** Various optimizers are tested, including Adam, RMSprop, and SGD.
-    * **Regularization:** L1, L2, and Dropout regularization are applied in different training instances to combat overfitting.
-    * **Early Stopping:** Used in several instances to halt training when validation loss stops improving.
-    * **Learning Rate Adjustment:** Different learning rates are explored to optimize convergence.
-    * **Epochs and Layers:** The number of epochs and layers are adjusted across experiments.
-* **Training Instances:** Five distinct training runs are performed, each with a unique combination of the above optimization techniques. Each instance's configuration and results are recorded in a summary table.
-* **Model Evaluation:** Each CNN instance is evaluated on the validation and test sets, with metrics including accuracy, F1-score, precision, and recall. Loss and accuracy curves are plotted for each instance.
+- **Convolutional Neural Networks (CNN):** Images are resized to (128, 128, 3) and normalized. The CNN architecture includes multiple convolutional and pooling layers, followed by dense layers. Five training instances are run, each with different combinations of optimizers (Adam, RMSprop, SGD), regularization (L1, L2, Dropout), early stopping, and learning rates. Each model is evaluated on validation and test sets with accuracy, F1-score, precision, and recall. Loss and accuracy curves are plotted for each instance.
 
 #### **Code Modularity**
 
-To ensure maintainability and reproducibility, the code is modularized with reusable functions for data loading, preprocessing, model building, training, evaluation, and plotting. This includes:
-* `extract_features()` and `get_cnn_data()` for preparing data for classical ML and CNNs, respectively.
-* `define_model()` for flexible CNN model creation with different hyperparameters.
-* `train_and_evaluate_model()` for classical ML model training and evaluation.
-* `loss_curve_plot()` for visualizing training and validation loss/accuracy.
-* `calculate_metrics()` for computing performance metrics.
-
-
-### **Results and Discussion**
+The code is organized into modular functions for clarity and reusability:
+- `extract_features()` and `get_cnn_data()` for preparing data for classical ML and CNNs, respectively.
+- `define_model()` for flexible CNN model creation with different hyperparameters.
+- `train_and_evaluate_model()` for classical ML model training and evaluation.
+- `loss_curve_plot()` for visualizing training and validation loss/accuracy.
+- `calculate_metrics()` for computing performance metrics.
 
 #### **Neural Network Experiments Table**
 
 The table below summarizes the five CNN training instances, each with different optimization strategies and their resulting performance on the validation set:
 
-| Training Instance | Optimizer | Learning Rate | Dropout Rate | Regularizer | Epochs (Stopped) | Validation Accuracy | Validation Precision | Validation Recall | Validation F1-score |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Instance 1 (Baseline)** | RMSprop | 0.001 | 0.0 | None | 15 | 71.13% | 71.90% | 66.22% | 64.67% |
-| **Instance 2** | Adam | 0.001 | 0.5 | L2 (0.01) | 34 | 95.49% | 89.67% | 85.04% | 86.08% |
-| **Instance 3** | RMSprop | 0.001 | 0.2 | L1 (0.01) | 7 | 54.08% | 43.33% | 45.02% | 42.02% |
-| **Instance 4** | SGD | 0.001 | 0.4 | None | 22 | 31.41% | 5.23% | 16.67% | 7.97% |
-| **Instance 5 (Best)** | Adam | 0.0001 | 0.5 | L2 (0.01) | 39 | 96.20% | 97.14% | 83.68% | 85.38% |
+| Training Instance        | Optimizer | Learning Rate | Dropout Rate | Regularizer | Epochs (Stopped) | Validation Accuracy | Validation Precision | Validation Recall | Validation F1-score |
+| :---------------------- | :-------- | :------------ | :----------- | :---------- | :--------------- | :----------------- | :------------------ | :--------------- | :----------------- |
+| Instance 1 (Baseline)   | RMSprop   | 0.001         | 0.0          | None        | 15               | 71.13%             | 71.90%              | 66.22%           | 64.67%             |
+| Instance 2              | Adam      | 0.001         | 0.5          | L2 (0.01)   | 34               | 95.49%             | 89.67%              | 85.04%           | 86.08%             |
+| Instance 3              | RMSprop   | 0.001         | 0.2          | L1 (0.01)   | 7                | 54.08%             | 43.33%              | 45.02%           | 42.02%             |
+| Instance 4              | SGD       | 0.001         | 0.4          | None        | 22               | 31.41%             | 5.23%               | 16.67%           | 7.97%              |
+| Instance 5 (Best)       | Adam      | 0.0001        | 0.5          | L2 (0.01)   | 39               | 96.20%             | 97.14%              | 83.68%           | 85.38%             |
 
-#### **Analysis of Results & Key Findings**
+#### **Results and Discussion**
 
-* **Optimization Impact:** The baseline CNN (Instance 1) showed overfitting, with much higher training than validation accuracy. Applying Dropout, L2 regularization, and Early Stopping (Instance 2) significantly improved generalization and validation accuracy. Not all combinations were effective—Instance 3 and 4 performed poorly, highlighting the importance of careful optimizer and regularizer selection. Fine-tuning the learning rate in Instance 5 yielded the best results.
+- **Optimization Impact:** The baseline CNN (Instance 1) showed overfitting, with much higher training than validation accuracy. Applying Dropout, L2 regularization, and Early Stopping (Instance 2) significantly improved generalization and validation accuracy. Not all combinations were effective—Instance 3 and 4 performed poorly, highlighting the importance of careful optimizer and regularizer selection. Fine-tuning the learning rate in Instance 5 yielded the best results.
 
-* **Classical ML vs. Neural Network:**
-    * The best SVM model achieved a test accuracy of **49.15%** and a weighted F1-score of **34.84%**.
-    * The best CNN model achieved a test accuracy of **96.20%** and a weighted F1-score of **85.38%**.
-    * CNNs, designed for image data, dramatically outperformed SVMs, which struggle with high-dimensional, spatially-correlated features even after PCA.
+- **Classical ML vs. Neural Network:**
+    - The best SVM model achieved a test accuracy of **49.15%** and a weighted F1-score of **34.84%**.
+    - The best CNN model achieved a test accuracy of **96.20%** and a weighted F1-score of **85.38%**.
+    - CNNs, designed for image data, dramatically outperformed SVMs, which struggle with high-dimensional, spatially-correlated features even after PCA.
 
-* **Summary:**
-    * **Best combination:** Adam optimizer, L2 regularization, Dropout, Early Stopping, and a lower learning rate (Instance 5) produced the highest validation and test performance.
-    * **Best implementation:** The CNN model was overwhelmingly superior to the SVM for this image classification task.
+- **Summary:**
+    - **Best combination:** Adam optimizer, L2 regularization, Dropout, Early Stopping, and a lower learning rate (Instance 5) produced the highest validation and test performance.
+    - **Best implementation:** The CNN model was overwhelmingly superior to the SVM for this image classification task.
 
 ### **How to Load the Best Model**
 
