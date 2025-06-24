@@ -30,7 +30,8 @@ Thumbs.db # Windows
 *.bak
 
 # Saved models directory (since you'll be explicitly saving models there)
-saved_models/
+#saved_models/*
+!saved_models/.gitkeep
 
 # Dataset directory (if you plan to keep raw data outside of Git)
 # If your 'data_maize' folder is large and you don't want to track it in Git, uncomment this:
