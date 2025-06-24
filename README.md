@@ -82,11 +82,11 @@ The table below summarizes the five CNN training instances, each with different 
 
 | Training Instance        | Optimizer | Learning Rate | Dropout Rate | Regularizer | Epochs (Stopped) | Validation Accuracy | Validation Precision | Validation Recall | Validation F1-score |
 | :---------------------- | :-------- | :------------ | :----------- | :---------- | :--------------- | :----------------- | :------------------ | :--------------- | :----------------- |
-| Instance 1 (Baseline)   | RMSprop   | 0.001         | 0.0          | None        | 15               | 71.13%             | 71.90%              | 66.22%           | 64.67%             |
-| Instance 2              | Adam      | 0.001         | 0.5          | L2 (0.01)   | 34               | 95.49%             | 89.67%              | 85.04%           | 86.08%             |
-| Instance 3              | RMSprop   | 0.001         | 0.2          | L1 (0.01)   | 7                | 54.08%             | 43.33%              | 45.02%           | 42.02%             |
-| Instance 4              | SGD       | 0.001         | 0.4          | None        | 22               | 31.41%             | 5.23%               | 16.67%           | 7.97%              |
-| Instance 5 (Best)       | Adam      | 0.0001        | 0.5          | L2 (0.01)   | 39               | 96.20%             | 97.14%              | 83.68%           | 85.38%             |
+| Instance 1 (Baseline)   | RMSprop   | 0.001         | 0.0          | None        | 50               | 47.41%             | 48.35%              | 47.41%           | 47.52%             |
+| Instance 2              | Adam      | 0.001         | 0.5          | L2 (0.01)   | 40               | 35.92%             | 46.94%              | 45.69%           | 45.70%             |
+| Instance 3              | RMSprop   | 0.001         | 0.2          | L1 (0.01)   | 40                | 13.79%             | 1.9%              | 13.79%           | 3.34%             |
+| Instance 4              | SGD       | 0.001         | 0.4          | None        | 200               | 14.37%             | 34.19%               | 35.63%           | 32.44%              |
+| Instance 5 (Best)       | Adam      | 0.0001        | 0.5          | L2 (0.01)   | 50               | 42.53%             | 43.26%              | 42.53%           | 41.87%             |
 
 #### **Results and Discussion**
 
