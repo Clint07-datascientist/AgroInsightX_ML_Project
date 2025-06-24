@@ -63,46 +63,42 @@ pip install tensorflow scikit-learn numpy seaborn matplotlib joblib
 
 ### **Implementation Choices & Methodology**
 
-The project compares two main approaches: a classical machine learning algorithm and a deep learning approach using Neural Networks.
+This project implements and compares two main approaches: a classical machine learning algorithm (Support Vector Machine, SVM) and a deep learning approach using Convolutional Neural Networks (CNNs). Each approach is optimized and evaluated for the maize pest and disease classification task.
 
 #### **1. Classical Model: Support Vector Machine (SVM)**
 
-* **Choice Rationale:** SVM was chosen as the classical algorithm because it is a powerful and versatile classifier. To make it comparable to a CNN, a feature engineering step was required.
-* **Methodology:**
-    1.  **Feature Extraction:** Since SVMs cannot process raw image data directly, each image was converted to a 1D feature vector by flattening its pixel values.
-    2.  **Preprocessing:** `StandardScaler` was applied to normalize the feature values, which is crucial for the performance of distance-based algorithms like SVM.
-    3.  **Dimensionality Reduction:** To manage the high dimensionality (16,384 features per image) and significantly reduce training time, **Principal Component Analysis (PCA)** was used to reduce the features to the 150 most important components.
-    4.  **Hyperparameter Tuning:** `RandomizedSearchCV` was used on a subset of the data to efficiently find the optimal hyperparameters (`C` and `gamma`) without the excessive computational cost of a full `GridSearchCV`.
+* **Feature Engineering:** Images are converted to grayscale, flattened, and then normalized using `StandardScaler`.
+* **Dimensionality Reduction:** Principal Component Analysis (PCA) reduces the high-dimensional feature space to the most informative components, improving efficiency and performance.
+* **Hyperparameter Tuning:** `RandomizedSearchCV` is used to efficiently search for the best SVM hyperparameters (`C`, `gamma`, and `kernel`).
+* **Model Evaluation:** The best SVM model is trained and evaluated on the validation and test sets, with metrics including accuracy, F1-score, precision, and recall.
 
 #### **2. Neural Network Models (CNN)**
 
-* **Choice Rationale:** Convolutional Neural Networks (CNNs) are the state-of-the-art for image classification tasks as they can automatically learn spatial hierarchies of features (from edges to complex patterns).
-* **Baseline Model Architecture:**
-    * **Input Layer:** `(128, 128, 3)` to match the resized image dimensions.
-    * **Convolutional Layers:** Two `Conv2D` layers with `MaxPooling2D` to extract features.
-    * **Dense Layer:** A fully connected `Dense` layer with 128 neurons.
-    * **Output Layer:** A `Dense` layer with 6 neurons (for 6 classes) using a `softmax` activation function.
-* **Optimization Techniques Explored:**
-    * **Optimizers:** Tested `Adam`, `RMSprop`, and `SGD` to observe their impact on convergence and performance.
-    * **Regularization:** Applied `L1`, `L2`, and `Dropout` regularization to combat the overfitting observed in the baseline model.
-    * **Early Stopping:** Used to monitor validation loss and prevent the model from training unnecessarily long after performance has peaked.
-    * **Learning Rate:** Experimented with different learning rates to fine-tune the model's convergence.
+* **Model Architecture:** The CNN consists of multiple convolutional and pooling layers, followed by dense layers. The input shape matches the resized image dimensions `(128, 128, 3)`.
+* **Optimization Techniques:**
+    * **Optimizers:** Various optimizers are tested, including Adam, RMSprop, and SGD.
+    * **Regularization:** L1, L2, and Dropout regularization are applied in different training instances to combat overfitting.
+    * **Early Stopping:** Used in several instances to halt training when validation loss stops improving.
+    * **Learning Rate Adjustment:** Different learning rates are explored to optimize convergence.
+    * **Epochs and Layers:** The number of epochs and layers are adjusted across experiments.
+* **Training Instances:** Five distinct training runs are performed, each with a unique combination of the above optimization techniques. Each instance's configuration and results are recorded in a summary table.
+* **Model Evaluation:** Each CNN instance is evaluated on the validation and test sets, with metrics including accuracy, F1-score, precision, and recall. Loss and accuracy curves are plotted for each instance.
 
 #### **Code Modularity**
 
-To adhere to the DRY (Don't Repeat Yourself) principle and ensure the code is maintainable, several reusable functions were created in the notebook:
-* `split_dataset()`: To partition a TensorFlow dataset.
-* `calculate_metrics()`: To compute and return a dictionary of performance metrics.
-* `plot_training_history()`: To visualize the model's learning curves.
-* `build_cnn_model()`: A flexible function to build CNNs with varying optimization hyperparameters.
-
+To ensure maintainability and reproducibility, the code is modularized with reusable functions for data loading, preprocessing, model building, training, evaluation, and plotting. This includes:
+* `extract_features()` and `get_cnn_data()` for preparing data for classical ML and CNNs, respectively.
+* `define_model()` for flexible CNN model creation with different hyperparameters.
+* `train_and_evaluate_model()` for classical ML model training and evaluation.
+* `loss_curve_plot()` for visualizing training and validation loss/accuracy.
+* `calculate_metrics()` for computing performance metrics.
 
 
 ### **Results and Discussion**
 
 #### **Neural Network Experiments Table**
 
-The following table details the 5 training instances required by the assignment, showing the different combinations of hyperparameters used for the CNN and the resulting performance on the **validation set**.
+The table below summarizes the five CNN training instances, each with different optimization strategies and their resulting performance on the validation set:
 
 | Training Instance | Optimizer | Learning Rate | Dropout Rate | Regularizer | Epochs (Stopped) | Validation Accuracy | Validation Precision | Validation Recall | Validation F1-score |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -110,36 +106,20 @@ The following table details the 5 training instances required by the assignment,
 | **Instance 2** | Adam | 0.001 | 0.5 | L2 (0.01) | 34 | 95.49% | 89.67% | 85.04% | 86.08% |
 | **Instance 3** | RMSprop | 0.001 | 0.2 | L1 (0.01) | 7 | 54.08% | 43.33% | 45.02% | 42.02% |
 | **Instance 4** | SGD | 0.001 | 0.4 | None | 22 | 31.41% | 5.23% | 16.67% | 7.97% |
-| **Instance 5 (Best)** | **Adam** | **0.0001** | **0.5** | **L2 (0.01)** | **39** | **96.20%** | **97.14%** | **83.68%** | **85.38%** |
+| **Instance 5 (Best)** | Adam | 0.0001 | 0.5 | L2 (0.01) | 39 | 96.20% | 97.14% | 83.68% | 85.38% |
 
 #### **Analysis of Results & Key Findings**
 
-* **Baseline vs. Optimized:** The baseline model (Instance 1) showed significant **overfitting**, with training accuracy far exceeding validation accuracy. Instance 2, which introduced `Dropout`, `L2 Regularization`, and `EarlyStopping`, dramatically reduced overfitting and improved accuracy by over 24%. This clearly demonstrates the effectiveness of these optimization techniques.
+* **Optimization Impact:** The baseline CNN (Instance 1) showed overfitting, with much higher training than validation accuracy. Applying Dropout, L2 regularization, and Early Stopping (Instance 2) significantly improved generalization and validation accuracy. Not all combinations were effective—Instance 3 and 4 performed poorly, highlighting the importance of careful optimizer and regularizer selection. Fine-tuning the learning rate in Instance 5 yielded the best results.
 
-* **Hyperparameter Impact:** The choice of optimizer and regularizer had a major impact. The combination of `RMSprop` with a strong `L1` penalty (Instance 3) and the standard `SGD` optimizer (Instance 4) both failed to converge and resulted in very poor performance. This highlights that not all optimization strategies are suitable for every problem. The `Adam` optimizer proved to be the most effective for this task.
+* **Classical ML vs. Neural Network:**
+    * The best SVM model achieved a test accuracy of **49.15%** and a weighted F1-score of **34.84%**.
+    * The best CNN model achieved a test accuracy of **96.20%** and a weighted F1-score of **85.38%**.
+    * CNNs, designed for image data, dramatically outperformed SVMs, which struggle with high-dimensional, spatially-correlated features even after PCA.
 
-* **Fine-Tuning for Best Performance:** Instance 5 was a fine-tuning of our best model (Instance 2). By reducing the learning rate from `0.001` to `0.0001`, the model was able to converge more precisely, achieving the **highest validation accuracy of 96.20%**.
-
-
-
-### **Final Model Comparison**
-
-To provide a final, unbiased evaluation, the best models were tested on the held-out **test set**.
-
-| Model | Test Accuracy | Test F1-score | Test Precision | Test Recall |
-| :--- | :--- | :--- | :--- | :--- |
-| **Tuned SVM** | 49.15% | 34.84% | 47.87% | 38.72% |
-| **Best CNN (Instance 5)** | **96.20%** | **85.38%** | **97.14%** | **83.68%** |
-
-
-#### **Conclusion: Which implementation was better?**
-
-The **Convolutional Neural Network (CNN) was overwhelmingly superior** to the Support Vector Machine (SVM).
-
-* The best CNN achieved a test accuracy of **96.2%**, more than double the SVM's accuracy of **49.15%**.
-* This result is expected for image classification tasks. CNNs are specifically designed to learn spatial features like textures, shapes, and patterns directly from image pixels. In contrast, the classical SVM, even with preprocessing, struggles to interpret the high-dimensional feature space of flattened images effectively.
-
-
+* **Summary:**
+    * **Best combination:** Adam optimizer, L2 regularization, Dropout, Early Stopping, and a lower learning rate (Instance 5) produced the highest validation and test performance.
+    * **Best implementation:** The CNN model was overwhelmingly superior to the SVM for this image classification task.
 
 ### **How to Load the Best Model**
 
