@@ -90,16 +90,7 @@ The table below summarizes the five CNN training instances, each with different 
 
 #### **Results and Discussion**
 
-- **Optimization Impact:** The baseline CNN (Instance 1) showed overfitting, with much higher training than validation accuracy. Applying Dropout, L2 regularization, and Early Stopping (Instance 2) significantly improved generalization and validation accuracy. Not all combinations were effective—Instance 3 and 4 performed poorly, highlighting the importance of careful optimizer and regularizer selection. Fine-tuning the learning rate in Instance 5 yielded the best results.
-
-- **Classical ML vs. Neural Network:**
-    - The best SVM model achieved a test accuracy of **49.15%** and a weighted F1-score of **34.84%**.
-    - The best CNN model achieved a test accuracy of **96.20%** and a weighted F1-score of **85.38%**.
-    - CNNs, designed for image data, dramatically outperformed SVMs, which struggle with high-dimensional, spatially-correlated features even after PCA.
-
-- **Summary:**
-    - **Best combination:** Adam optimizer, L2 regularization, Dropout, Early Stopping, and a lower learning rate (Instance 5) produced the highest validation and test performance.
-    - **Best implementation:** The CNN model was overwhelmingly superior to the SVM for this image classification task.
+The ML algorithmn seeks to identify signs of an un healthy maize plant by analyzing it's leaves. A crop can be infested by a certain pest leading to a certain disease hence why the accuracies are low. 
 
 ### **How to Load the Best Model**
 
